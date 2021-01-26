@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// i use npx prisma db push --preview-feature, as heroku does not allow to create shadow dbs. -> no migration files, just 24/7 dataloss
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Easy_Quiz {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  question  String
+  points    Int
+  answer_1  String
+  answer_2  String
+  answer_3  String
+  wrong_1_1 String
+  wrong_1_2 String
+  wrong_1_3 String
+  wrong_2_1 String
+  wrong_2_2 String
+  wrong_2_3 String
+  wrong_3_1 String
+  wrong_3_2 String
+  wrong_3_3 String
+  
+}
+
