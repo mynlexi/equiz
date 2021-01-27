@@ -3,26 +3,9 @@ import Head from 'next/head'
 import Layout from "../components/Layout"
 import prisma from '../lib/prisma'
 import Quiz, { QuizProps } from '../components/Quiz'
+import { signIn, signOut, useSession } from "next-auth/client";
 
-// import {PrismaClient } from '@prisma/client'
 
-// const prisma = new PrismaClient()
-
-// async function main() {
-//     const Quiz = await prisma.post.update({
-//       where: { id: 1 },
-//       data: { published: true },
-//     })
-//     console.log(post)
-//   }
-
-// main()
-//   .catch(e => {
-//     throw e
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect()
-//   })
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.quiz.findMany({
     where: { points: 10 },
