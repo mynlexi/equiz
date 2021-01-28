@@ -16,7 +16,15 @@ model Quiz {
   title     String
   question  String
   points    Int
-  answer_1  String 
+  answer_1_c  String
+  answer_2_c  String
+  answer_3_c  String
+  answer_1_1  String
+  answer_1_2  String 
+  answer_2_1  String 
+  answer_2_2  String 
+  answer_3_1  String
+  answer_3_2  String 
   
 }
 

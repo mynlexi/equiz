@@ -8,7 +8,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 
 export const getStaticProps: GetStaticProps = async () => {
   const feed = await prisma.quiz.findMany({
-    where: { points: 10 },
+    where: { },
     include: {
       User: {
         select: { name: true,
@@ -24,6 +24,7 @@ type Props ={
 }
 
 const Blog: React.FC<Props> = (props) => {
+  console.log(props)
   return(
     <Layout>
       <div className="page">

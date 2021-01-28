@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown"
 import Layout from "../../components/Layout"
 import { QuizProps } from '../../components/Quiz'
 import prisma from '../../lib/prisma'
+import QuizAnswers from "../../components/quizDnD"
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const quiz = await prisma.quiz.findUnique({
@@ -21,6 +22,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }
 }
 
+// transform the props so they show up a certain way -> just give them to other component?
+
 const Quiz: React.FC<QuizProps> = (props) => {
   let title = props.title
 
@@ -31,7 +34,8 @@ const Quiz: React.FC<QuizProps> = (props) => {
     </div>
     <p>By {props?.User?.name || "Unknown User"} </p>
     <p>{props.question}</p>
-    <p>{props.answer_1	}</p>
+
+    <QuizAnswers quiz={props} />
     <style jsx>{`
         .page {
           background: white;

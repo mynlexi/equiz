@@ -10,7 +10,15 @@ export type QuizProps = {
     email: string;
   } ;
   question: string;
-  answer_1: string;
+  answer_1_c: string;
+  answer_2_c: string;
+  answer_3_c: string;
+  answer_1_1: string;
+  answer_1_2: string;
+  answer_2_1: string;
+  answer_2_2: string;
+  answer_3_1: string;
+  answer_3_2: string;
 };
 
 const Quiz: React.FC<{ Quiz: QuizProps }> = ({ quiz }) => {
@@ -20,7 +28,7 @@ const Quiz: React.FC<{ Quiz: QuizProps }> = ({ quiz }) => {
       <h2>{quiz.title}</h2>
       <small>By {userName}</small>
       <p>{quiz.question}</p>
-      <p>{quiz.answer_1	}</p>
+     
       
       <style jsx>{`
         div {
