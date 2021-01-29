@@ -81,9 +81,38 @@ export class Quiz extends React.Component {
         return;
         }
       // else, moved answer between columns
+
+      const startAnswerIds = Array.from(start.answerIds)
+
+    startAnswerIds.splice(source.index, 1);  // substracting answer from old column
+    const newStart = {
+      ...start,
+      answerIds: startAnswerIds
+    }
+
+    const finishAnswerIds = Array.from(finish.answerIds)
+    finishAnswerIds.splice(destination.index, 0, draggableId) // adding it to new column
+
+    const newFinish= {
+      ...finish, 
+      answerIds: finishAnswerIds
+    }
+
+  const newState ={
+    ...this.state, 
+    columns: {
+      ...this.state.columns,
+      [newStart.id]: newStart,
+      [newFinish.id]: newFinish,
+    }
+  }
+
+  this.setState(newState);
+  return;
+  }
     
 
-  }
+  
 
   render() {
 
@@ -97,7 +126,9 @@ export class Quiz extends React.Component {
         </h2>
         <p>Solve this {this.props.question} by dragging each step of the solution in the solution container</p>
       </div>
-      <DragDropContext>
+      <DragDropContext
+      onDragEnd={this.onDragEnd}
+      >
         <Container     
         >
           {this.state.columnOrder.map((columnId, index) =>{
